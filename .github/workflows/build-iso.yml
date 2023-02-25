@@ -33,7 +33,7 @@ jobs:
       run: packer init packer.pkr.hcl
 
     - name: Build ISO
-      run: packer build packer.pkr.hcl
+      run: PACKER_LOG=1 packer build packer.pkr.hcl
 
     - name: Upload ISO to GitHub Packages
       uses: actions/upload-artifact@v2
