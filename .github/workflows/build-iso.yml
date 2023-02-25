@@ -1,0 +1,26 @@
+name: Build ISO with Packer
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-iso:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install Packer
+      uses: hashicorp/setup-packer@v1.7.4
+
+    - name: Build ISO
+      run: packer build template.json
+
+    - name: Upload ISO to GitHub Packages
+      uses: actions/upload-artifact@v2
+      with:
+        name: my-iso
+        path: output/my-iso.iso
