@@ -25,8 +25,8 @@ jobs:
       with:
         version: ${{ env.PACKER_VERSION }}   
 
-    - name: Install QEMU
-      run: sudo apt-get update && sudo apt-get install -y qemu-system-x86 qemu-kvm
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@e81a89b1732b9c48d79cd809d8d81d79c4647a18
 
     - name: Initialise Packer
       id: init
