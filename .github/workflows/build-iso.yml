@@ -36,7 +36,7 @@ jobs:
       run: PACKER_LOG=1 packer build packer.pkr.hcl
 
     - name: Upload ISO to GitHub Packages
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@0b7f8abb1508181956e8e162db84b466c27e18ce
       with:
         name: my-iso
-        path: output/my-iso.iso
+        path: output/macbook-ubuntu.zip

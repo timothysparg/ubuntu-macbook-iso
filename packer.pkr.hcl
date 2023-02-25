@@ -25,6 +25,6 @@ build {
   post-processor "compress" {
     keep_input_artifact = false
     format              = "zip"
-    output              = "ubuntu-custom.zip"
+    output              = "macbook-ubuntu.zip"
   }
 }
