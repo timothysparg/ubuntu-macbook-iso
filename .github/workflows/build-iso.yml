@@ -18,12 +18,12 @@ jobs:
       run: |
         version_string=$(grep "^packer " .tool-versions)
         version=$(echo "$version_string" | awk '{print $2}')
-        echo "::set-output name=version::$version"
+        echo "PACKER_VERSION=$version" >> $GITHUB_STATE
 
     - name: Install Packer
       uses: hashicorp/setup-packer@ae6b3ed3bec089bbfb576ab7d714df7cbc4b88a4
       with:
-        version: ${{ steps.packer-version.outputs.version }}   
+        version: ${{ env.PACKER_VERSION }}   
 
     - name: Install QEMU
       run: sudo apt-get update && sudo apt-get install -y qemu-system-x86
