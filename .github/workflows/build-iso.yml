@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-iso:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
     - name: Checkout code
@@ -26,7 +26,7 @@ jobs:
         version: ${{ env.PACKER_VERSION }}   
 
     - name: Install QEMU
-      run: sudo apt-get update && sudo apt-get install -y qemu-system-x86
+      run: sudo apt-get update && sudo apt-get install -y qemu-system-x86 qemu-kvm
 
     - name: Initialise Packer
       id: init

@@ -1,6 +1,6 @@
 
 source "qemu" "builder" {
-  accelerator      = "hvf"
+  accelerator      = "kvm"
   boot_command     = ["<esc><wait>", "<esc><wait>", "<enter><wait>", "live <wait>", "vmlinuz boot=casper iso-scan/filename=/ubuntu-20.04.3-live-server-amd64.iso <wait>", "initrd /initrd <wait>", "boot <enter>"]
   disk_size        = "10G"
   format           = "qcow2"
