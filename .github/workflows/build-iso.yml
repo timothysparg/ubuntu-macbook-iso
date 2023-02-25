@@ -16,8 +16,11 @@ jobs:
     - name: Install Packer
       uses: hashicorp/setup-packer@v1.7.4
 
+    - name: Install QEMU
+      run: sudo apt-get update && sudo apt-get install -y qemu-system-x86
+
     - name: Build ISO
-      run: packer build template.json
+      run: packer build packer.pkr.hcl
 
     - name: Upload ISO to GitHub Packages
       uses: actions/upload-artifact@v2
