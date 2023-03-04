@@ -27,7 +27,7 @@ jobs:
 
     - name: setup KVM
       run: |
-        sudo apt install qemu-kvm libvirt-bin bridge-utils virtinst virt-manager
+        sudo apt install -y qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virt-manager
 
     - name: Initialise Packer
       id: init
