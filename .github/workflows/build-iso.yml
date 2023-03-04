@@ -25,12 +25,9 @@ jobs:
       with:
         version: ${{ env.PACKER_VERSION }}   
 
-    - name: Set up QEMU
-      uses: docker/setup-qemu-action@e81a89b1732b9c48d79cd809d8d81d79c4647a18
-
-    - name: Where is QEMU?
+    - name: setup KVM
       run: |
-        ls /bin
+        apt install qemu-kvm libvirt-bin bridge-utils virtinst virt-manager
 
     - name: Initialise Packer
       id: init
