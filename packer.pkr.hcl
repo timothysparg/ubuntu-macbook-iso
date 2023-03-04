@@ -1,7 +1,10 @@
 
 source "qemu" "builder" {
-  accelerator      = "kvm"
-  boot_command     = ["<esc><wait>", "<esc><wait>", "<enter><wait>", "live <wait>", "vmlinuz boot=casper iso-scan/filename=/ubuntu-20.04.3-live-server-amd64.iso <wait>", "initrd /initrd <wait>", "boot <enter>"]
+  boot_command = [
+    "<enter><enter><f6><esc><wait> ",
+    "autoinstall ds=nocloud-net;seedfrom=http://{{ .HTTPIP }}:{{ .HTTPPort }}/",
+    "<enter><wait>"
+  ]
   disk_size        = "10G"
   format           = "qcow2"
   headless         = true
@@ -9,9 +12,9 @@ source "qemu" "builder" {
   iso_url          = "https://releases.ubuntu.com/jammy/ubuntu-22.04.2-desktop-amd64.iso"
   memory           = 2048
   net_device       = "virtio-net"
-  output_directory = "output-qemu"
+  output_directory = "output"
   ssh_password     = "ubuntu"
-  ssh_timeout      = "5m"
+  ssh_timeout      = "10m"
   ssh_username     = "ubuntu"
 }
 
